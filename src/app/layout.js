@@ -23,10 +23,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div>lamania</div>
-        <Navbar />
-        {children}
-        <Footer />
+        <div className="container">
+          <Navbar />
+          {children}
+          lamania
+          <Footer />
+        </div>
       </body>
     </html>
   )

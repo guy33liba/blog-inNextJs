@@ -1,7 +1,6 @@
-'use client'
+"use client"
 import Link from "next/link"
 import React from "react"
-
 const Navbar = () => {
   const links = [
     {
@@ -35,23 +34,25 @@ const Navbar = () => {
       url: "/dashboard",
     },
   ]
-
   return (
-    <Link href="/">
-      {links.map((link) => {
-        return (
-          <Link key={link.id} href={link.url}>
-            <span>{link.title}</span>
+    <div className={styles.container}>
+      <Link href="/" className={styles.logo}>
+        lamamia
+      </Link>
+      <div className={styles.links}>
+        <DarkModeToggle />
+        {links.map((link) => (
+          <Link key={link.id} href={link.url} className={styles.link}>
+            {link.title}
           </Link>
-        )
-      })}
-      <button
-        onClick={() => {
-          console.log("logged out")
-        }}>
-        LogOut
-      </button>
-    </Link>
+        ))}
+        {session.status === "authenticated" && (
+          <button className={styles.logout} onClick={signOut}>
+            Logout
+          </button>
+        )}
+      </div>
+    </div>
   )
 }
 
